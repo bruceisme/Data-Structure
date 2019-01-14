@@ -229,6 +229,7 @@ void LinkList<ElemType>::LinkDel()
 
 ### 1. 栈
 > 代码模板（顺序表实现）
+
 ```C++
 class SqStack
 {
@@ -249,8 +250,10 @@ private:                 //顺序栈类的数据成员
     int m_size;           //向量空间大小
 };
 ```
+
 ### 2. 队列
 > 代码模板（顺序表实现）
+
 ```C++
 class SqQueue
 {
@@ -272,13 +275,18 @@ private:
     int m_size;
 };
 ```
+
 ### 3. 串
+
 > ignore
 
 ## 第四章：*树*
+
 ***
 ### 1. 二叉树
+
 > 二叉树链表:
+
 ```C++
 template<class ElemType>
 class BinaryTree
