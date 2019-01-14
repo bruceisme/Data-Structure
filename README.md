@@ -56,25 +56,26 @@
 > 基本功能`增、删、改、查`
 ***
 > 抽象数据类型ADT
->```c
->   ADT List
->   {
->   Data:
->   Operation:
->       InitList(&L)
->       CreateList(&L)
->       ListEmpty(L)
->       ListLength(L)
->       LocateElem(L,e)
->       PriorElem(L,cur_e,&pre_e)
->       NextElem(L,cur_e,&pre_e)
->       ListInsert(&L,i,e)
->       ListDelete(&L,i,&e)
->       GetElem(L,i,&e)
->       ListTraverse(L)
->       DestroyList(&L)
->   }//ADT List
->```
+
+```C++
+   ADT List
+   {
+   Data:
+   Operation:
+       InitList(&L)
+       CreateList(&L)
+       ListEmpty(L)
+       ListLength(L)
+       LocateElem(L,e)
+       PriorElem(L,cur_e,&pre_e)
+       NextElem(L,cur_e,&pre_e)
+       ListInsert(&L,i,e)
+       ListDelete(&L,i,&e)
+       GetElem(L,i,&e)
+       ListTraverse(L)
+       DestroyList(&L)
+   }//ADT List
+```
 
 ***
 
@@ -160,63 +161,63 @@ private:
 >  **重要操作代码实现**
 > - 单链表就地逆置
 >
->>```C++
->>template <class ElemType>
->>void LinkList<ElemType>::Inverse()
->>{
->>  LinkNode<ElemType>> *p, *q, *s;
->>  p=head->next;
->>  q=p->next;
->>  while(p&&q)
->>  {
->>     s=q->next;
->>     q->next=p;
->>     p=q;
->>     q=s;
->>  }
->>  tail=head->next;
->>  tail->next =NULL;
->>  head->next=p;
->>};
->>
->>```
+```C++
+template <class ElemType>
+void LinkList<ElemType>::Inverse()
+{
+  LinkNode<ElemType *p, *q, *s;
+  p=head->next;
+  q=p->next;
+  while(p&&q)
+  {
+     s=q->next;
+     q->next=p;
+     p=q;
+     q=s;
+  }
+  tail=head->next;
+  tail->next =NULL;
+  head->next=p;
+};
+
+```
 > - 删除重复节点
 >
->> ```C++
->> template <class ElemType>
->> void LinkList<ElemType>::LinkDel()
->> {
->> //让p指针指向第一个有效结点
->> LinkNode<ElemType> *p=head->next;
->> //p指针所指结点的位置:设置位置变量(包括下面的Q是为了能调用删除函数)
->> int locationP=1;
->> while(p)
->> {
->>     LinkNode<ElemType> *q=p->next;
->>     int e,locationQ=locationP+1;
->>     while(q)
->>      {
->>          bool mark=0;
->>          if(p->data==q->data)
->>          {
->>              //如果q的下一个结点不是NULL的话,则让它指向下一个结点
->>              q=q->next;
->>              mark=1;
->>              //删除重复的结点(位置为locationQ)
->>              Delete(e,locationQ);
->>          }
->>          if(!mark)
->>          {
->>              q=q->next;
->>              //q指针所指结点的位置(与q同步)
->>              locationQ++;
->>          }
->>      }
->>      p=p->next;
->>      locationP++;
->> }
->> }
->> ```
+ ```C++
+ template <class ElemType>
+ void LinkList<ElemType>::LinkDel()
+ {
+ //让p指针指向第一个有效结点
+ LinkNode<ElemType> *p=head->next;
+ //p指针所指结点的位置:设置位置变量(包括下面的Q是为了能调用删除函数)
+ int locationP=1;
+ while(p)
+ {
+     LinkNode<ElemType> *q=p->next;
+     int e,locationQ=locationP+1;
+     while(q)
+      {
+          bool mark=0;
+          if(p->data==q->data)
+          {
+              //如果q的下一个结点不是NULL的话,则让它指向下一个结点
+              q=q->next;
+              mark=1;
+              //删除重复的结点(位置为locationQ)
+              Delete(e,locationQ);
+          }
+          if(!mark)
+          {
+              q=q->next;
+              //q指针所指结点的位置(与q同步)
+              locationQ++;
+          }
+      }
+      p=p->next;
+      locationP++;
+ }
+ }
+ ```
 ***
 >>双向链表
 
