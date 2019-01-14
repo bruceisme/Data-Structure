@@ -160,7 +160,7 @@ private:
 >
 >  **重要操作代码实现**
 > - 单链表就地逆置
->
+
 ```C++
 template <class ElemType>
 void LinkList<ElemType>::Inverse()
@@ -181,43 +181,45 @@ void LinkList<ElemType>::Inverse()
 };
 
 ```
+
 > - 删除重复节点
->
- ```C++
- template <class ElemType>
- void LinkList<ElemType>::LinkDel()
- {
- //让p指针指向第一个有效结点
- LinkNode<ElemType> *p=head->next;
- //p指针所指结点的位置:设置位置变量(包括下面的Q是为了能调用删除函数)
- int locationP=1;
- while(p)
- {
-     LinkNode<ElemType> *q=p->next;
-     int e,locationQ=locationP+1;
-     while(q)
-      {
-          bool mark=0;
-          if(p->data==q->data)
-          {
-              //如果q的下一个结点不是NULL的话,则让它指向下一个结点
-              q=q->next;
-              mark=1;
-              //删除重复的结点(位置为locationQ)
-              Delete(e,locationQ);
-          }
-          if(!mark)
-          {
-              q=q->next;
-              //q指针所指结点的位置(与q同步)
-              locationQ++;
-          }
-      }
-      p=p->next;
-      locationP++;
- }
- }
- ```
+
+```C++
+template <class ElemType>
+void LinkList<ElemType>::LinkDel()
+{
+    //让p指针指向第一个有效结点
+    LinkNode<ElemType> *p=head->next;
+    //p指针所指结点的位置:设置位置变量(包括下面的Q是为了能调用删除函数)
+    int locationP=1;
+    while(p)
+    {
+        LinkNode<ElemType> *q=p->next;
+        int e,locationQ=locationP+1;
+        while(q)
+        {
+            bool mark=0;
+            if(p->data==q->data)
+            {
+                //如果q的下一个结点不是NULL的话,则让它指向下一个结点
+                q=q->next;
+                mark=1;
+                //删除重复的结点(位置为locationQ)
+                Delete(e,locationQ);
+            }
+            if(!mark)
+            {
+                q=q->next;
+                //q指针所指结点的位置(与q同步)
+                locationQ++;
+            }
+        }
+        p=p->next;
+        locationP++;
+    }
+}
+```
+
 ***
 >>双向链表
 
@@ -241,7 +243,7 @@ public:
     void Pop();
     void Traverse1();    //新添加方法, 利用指针遍历栈中各元素;
     void Traverse2();    //新添加方法, 利用下标遍历栈中各元素;
-private:                  //顺序栈类的数据成员
+private:                 //顺序栈类的数据成员
     ElemType *m_base;     //基地址指针
     int m_top;            //栈顶指针
     int m_size;           //向量空间大小
