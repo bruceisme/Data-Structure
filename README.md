@@ -441,5 +441,5 @@ private:
 
 ### 7. 堆排序
 ```C++
-
+   template<class ElemType>
 ```
