@@ -61,7 +61,7 @@
 >       ListLength(L)
 >       LocateElem(L,e)
 >       PriorElem(L,cur_e,&pre_e)
->       NextElem(L,cur_e,&pre_e) 
+>       NextElem(L,cur_e,&pre_e)
 >       ListInsert(&L,i,e)
 >       ListDelete(&L,i,&e)
 >       GetElem(L,i,&e)
@@ -75,6 +75,7 @@
 ### 1. 顺序表
 
 >代码模板：
+
 ```c++
 class SqList
 {
@@ -106,11 +107,13 @@ private:
     void CopyFrom(const SqList<ElemType>&);
 };
 ```
->  访问顺序表中任意元素的时间都相等，具有这一特点的存储结构称为随机存取结构。
+
+> 访问顺序表中任意元素的时间都相等，具有这一特点的存储结构称为随机存取结构。
 
 ### 2. 链表
 
 > 代码模板：
+
 ```C++
 class LinkList: public List<ElemType>
 {
@@ -119,8 +122,8 @@ public:
     LinkList(const LinkList<ElemType>&);
     ~LinkList();
     bool IsEmpty()const {return len <= 0;}
-    int  Length()const {return len;} 
-    void Clear();  
+    int  Length()const {return len;}
+    void Clear();
     bool GetElem (ElemType&,int) const;
     bool SetElem( const ElemType&,int);
     int LocateElem(const ElemType&) const;
@@ -140,15 +143,17 @@ private:
     LinkNode<ElemType> *tail;
 };
 ```
+
 > 单链表
 > - <img src="./img/list_img1.jpg"  width="500">
 > - 表头指针：存放单链表中第一个结点的地址的指针。【指向a0(带头结点时)或指向a1(不带头结点时)的指针，上图中的L】
 > - 头结点：带头结点的单链表中L【上图中的a1之前的结点a0】
 > - 开始结点：，又称首节点，存放单链表的第一个存放元素的结点。【a1】
 > - 表尾结点：单链表中最后一个结点，表尾结点的指针域指针为空。【an】
-> 
+>
 >  **重要操作代码实现**
 > - 单链表就地逆置
+>
 >>```C++
 >>template <class ElemType>
 >>void LinkList<ElemType>::Inverse()
@@ -167,8 +172,10 @@ private:
 >>  tail->next =NULL;
 >>  head->next=p;
 >>};
+>>
 >>```
->- 删除重复节点
+> - 删除重复节点
+>
 >> ```C++
 >> template <class ElemType>
 >> void LinkList<ElemType>::LinkDel()
@@ -208,7 +215,7 @@ private:
 >>双向链表
 
 > 循环链表
-> 
+>
 ## 第三章：*栈、队列、串*
 
 ### 1. 栈
@@ -270,6 +277,8 @@ private:
 ***
 ### 1. 直接插入排序
 
+>
+
 ```C++
     template<class ElemType>
     void InsertSort(ElemType data[],int n)
@@ -288,7 +297,7 @@ private:
         }
     }
 ```
-    
+
 ### 2. 折半插入排序
 
 ```C++
